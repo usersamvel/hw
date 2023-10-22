@@ -5,15 +5,15 @@ public class Task5 {
     static final int DIGIT = 9;
     static final int BASE = 10;
 
-    public int child(int num) {
-        int num1 = num;
+    public int child(int inputNumber) {
+        int mutableNumber = inputNumber;
         int ans = 0;
         int digits = 0;
-        while (num1 > 0) {
-            int digit1 = num1 % BASE;
-            num1 = num1 / BASE;
-            int digit2 = num1 % BASE;
-            num1 = num1 / BASE;
+        while (mutableNumber > 0) {
+            int digit1 = mutableNumber % BASE;
+            mutableNumber = mutableNumber / BASE;
+            int digit2 = mutableNumber % BASE;
+            mutableNumber = mutableNumber / BASE;
             ans = ans + (digit1 + digit2) * (int) Math.pow(BASE, digits);
             if (digit1 + digit2 >= BASE) {
                 digits += 2;
@@ -24,30 +24,30 @@ public class Task5 {
         return ans;
     }
 
-    public boolean isPalindrome(int num) {
-        String str = Integer.toString(num);
-        int len = str.length();
+    public boolean isPalindrome(int inputNumber) {
+        String strFromNumber = Integer.toString(inputNumber);
+        int len = strFromNumber.length();
         for (int i = 0; i < len / 2 + 1; ++i) {
-            if (str.charAt(i) != str.charAt(len - 1 - i)) {
+            if (strFromNumber.charAt(i) != strFromNumber.charAt(len - 1 - i)) {
                 return false;
             }
         }
         return true;
     }
 
-    public boolean isPalindromeDescendant(int num) {
-        int num1 = num;
-        if (num1 < 0) {
+    public boolean isPalindromeDescendant(int inputNumber) {
+        int mutableNumber = inputNumber;
+        if (mutableNumber < 0) {
             throw new IllegalArgumentException("negative number");
         }
-        if (num1 < DIGIT) {
+        if (mutableNumber < DIGIT) {
             return true;
         }
-        while (num1 >= BASE) {
-            if (isPalindrome(num1)) {
+        while (mutableNumber >= BASE) {
+            if (isPalindrome(mutableNumber)) {
                 return true;
             }
-            num1 = child(num1);
+            mutableNumber = child(mutableNumber);
         }
         return false;
     }

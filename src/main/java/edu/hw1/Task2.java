@@ -5,12 +5,12 @@ public class Task2 {
     static final int DIGIT = 9;
     static final int BASE = 10;
 
-    public int countDigits(int num) {
+    public int countDigits(int inputNumber) {
 
-        int num1 = num;
+        int mutableNumber = inputNumber;
         int digits = 1;
-        while (num1 > DIGIT) {
-            num1 = num1 / BASE;
+        while (mutableNumber > DIGIT) {
+            mutableNumber = mutableNumber / BASE;
             ++digits;
         }
         return digits;
