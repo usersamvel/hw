@@ -5,17 +5,10 @@ import java.util.logging.Logger;
 
 public interface Connection extends AutoCloseable {
 
-    String MESSAGE = "Closed";
+    String MESSAGE = "Close";
     Logger LOGGER = Logger.getGlobal();
 
-    void execute(String command){
-        
-    };
 
-    class StableConnection implements Connection {
-
-        
-        public void execute(String command) {
 
         }
 
@@ -27,8 +20,7 @@ public interface Connection extends AutoCloseable {
 
     class FaultyConnection implements Connection {
 
-        
-        public void execute(String command) {
+
             Random r = new Random();
             int chance = r.nextInt(2);
             if (chance == 0) {
